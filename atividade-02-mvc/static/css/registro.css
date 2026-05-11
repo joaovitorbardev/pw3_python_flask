@@ -1,0 +1,84 @@
+
+        /* ===== CONTEÚDO ===== */
+        main {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .form-container {
+            background-color: #2a2b2f;
+            padding: 40px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            text-align: center;
+            color: #b5b5b5;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: 2px solid #ff6a00;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #ff6a00;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #e85d00;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #ff6a00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }

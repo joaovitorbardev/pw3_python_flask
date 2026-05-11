@@ -1,0 +1,41 @@
+ {% extends 'base.html' %}
+
+    {% block content %}
+    <!-- FORMULÁRIO -->
+    <main>
+        <div class="form-container">
+            <h1>Criar Conta</h1>
+            <p>Junte-se ao mundo de Overwatch</p>
+
+            <form method="POST" action="/registrar">
+                <div class="form-group">
+                    <label for="nome">Nome de usuário</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmar">Confirmar senha</label>
+                    <input type="password" id="confirmar" name="confirmar" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Criar Conta</button>
+            </form>
+
+            <div class="login-link">
+                Já tem uma conta?
+                <a href="/login">Entrar</a>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    <h2>Cadastro de jogos</h2>
+    <br>
+
+    <form action="{{url_for('cadgames')}}" method="post">
+        <label>TITULO</label>
+        <input type="text" name="titulo" placeholder="insira o nome do jogo" class="form-control" required>
+        <label>ano</label>
+        <input type="text" name="ano" placeholder="insira o ano de laçamento do jogo" class="form-control" required>
+        <label>Categoria</label>
+        <input type="text" name="categoria" placeholder="insira a categoria do jogo" class="form-control" required>
+
+        <input type="submit" value="cadastrar" class="btn btn-success">
+        <input type="reset" value="limpar">
+    </form>
+    <br>
+    <br>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>titulo</th>
+            <th>ano</th>
+            <th>categoria</th>
+        </tr>
+    </table>
+
+    <tr>
+        <td>{{game.titulo}}</td>
+        <td>{{game.ano}}</td>
+        <td>{{game.categoria}}</td>
+    </tr>
+    {%endfor%}
+    {%endblock content%}

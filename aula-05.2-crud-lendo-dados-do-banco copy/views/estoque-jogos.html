@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- formulario de cadastro -->
+ <details>
+    <summary>[ casdastrar um novo jogo ]</summary>
+    <div class="col-md-4">
+        <form action="{{url_for('estoque_jogos')}}" method="post">
+            <input type="text" name="titulo" placeholder="Titulo" class="form-control" required>
+            <input type="text" name="ano" placeholder="Ano" class="form-control" required>
+            <input type="text" name="categoria" placeholder="Categoria" class="form-control" required>
+            <input type="text" name="plataforma" placeholder="Plataforma" class="form-control" required>
+            <input type="number" name="preco" placeholder="Preco" class="form-control" required>
+            <input type="number" name="quantidade" placeholder="Quantidade" class="form-control" required>
+        </form>
+    </div>
+ </details>
+
+<!-- TABELA DE JOGOS -->
+ <h2>Controle de Estoque</h2>
+ <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Titular</th>
+            <th>Ano</th>
+            <th>Categoria</th>
+            <th>Plataforma</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <body>
+        {% for game in games %}
+        <td>{{game.titulo}}</td>
+        <td>{{game.ano}}</td>
+        <td>{{game.categoria}}</td>
+        <td>{{game.plataforma}}</td>
+        <td>{{game.preco}}</td>
+        <td>{{game.quantidade}}</td>
+    </body>
+ </table>
