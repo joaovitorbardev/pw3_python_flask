@@ -77,7 +77,7 @@
       <td>{{game.preco}}</td>
       <td>{{game.quantidade}}</td>
       <td style="text-align: center">
-        <a href="#" class="btn btn-warning"> Editar </a>
+        <a href="{{url_for('editar_jogos', id=game.id)}}" class="btn btn-warning"> Editar </a>
       </td>
       <td style="text-align: center">
         <a

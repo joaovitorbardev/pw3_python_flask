@@ -49,3 +49,4 @@ if __name__ == '__main__':
         db.create_all()    
     # Inicia o servidor
     app.run(debug=True)  
+    # Ligando o Modo de Depuração (reinicia automático)

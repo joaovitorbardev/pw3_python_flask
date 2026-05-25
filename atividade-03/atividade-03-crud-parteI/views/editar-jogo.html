@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Editar Jogo</h2>
+
+<form action="" method="post" class="col-md-4">
+
+    <input type="text" name="titulo" value="{{ game.titulo }}" class="form-control" required>
+
+    <input type="number" name="ano" value="{{ game.ano }}" class="form-control" required>
+
+    <input type="text" name="categoria" value="{{ game.categoria }}" class="form-control" required>
+
+    <input type="text" name="plataforma" value="{{ game.plataforma }}" class="form-control" required>
+
+    <input type="number" step="0.01" name="preco" value="{{ game.preco }}" class="form-control" required>
+
+    <input type="number" name="quantidade" value="{{ game.quantidade }}" class="form-control" required>
+
+    <input type="submit" value="Salvar Alterações" class="btn btn-success mt-2">
+
+</form>
+
+{% endblock %}

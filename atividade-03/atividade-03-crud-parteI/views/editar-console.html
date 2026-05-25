@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Editar Console</h2>
+
+<form action="" method="post" class="col-md-4">
+
+    <input type="text" name="nome" value="{{ console.nome }}" class="form-control" required>
+
+    <input type="text" name="fabricante" value="{{ console.fabricante }}" class="form-control" required>
+
+    <input type="number" name="ano" value="{{ console.ano }}" class="form-control" required>
+
+    <input type="number" step="0.01" name="preco" value="{{ console.preco }}" class="form-control" required>
+
+    <input type="number" name="quantidade" value="{{ console.quantidade }}" class="form-control" required>
+
+    <input type="submit" value="Salvar Alterações" class="btn btn-success mt-2">
+
+</form>
+
+{% endblock %}

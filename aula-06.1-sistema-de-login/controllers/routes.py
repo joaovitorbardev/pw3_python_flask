@@ -1,6 +1,8 @@
 # Importando o render_template
 # Motor para renderizar as páginas
 from flask import render_template, request, redirect, url_for
+#importando werkzeug
+from werkzeug.security import generate_password_hash
 
 #importando um Model Game e o SQLAlchemy
 from models.database import Game, db
@@ -92,3 +94,41 @@ def init_app(app):
         games = Game.query.all()
         return render_template('estoque-jogos.html', games=games)
     
+    @app.route('/editar-jogos/<int:id>', methods=['GET'])
+    def editar_jogos(id):
+        # buscando o jogo no banco pelo id
+        game = Game.query.get(id)
+        # verificando se a requisição é post
+        if request.method = 'POST':
+            dados_form = request.form.to_dict()
+            game.titulo = dados_form['titulo']
+            game.ano = dados_form['ano']
+            game.categoria = dados_form['categoria']
+            game.plataforma = dados_form['plataforma']
+            game.preco = dados_form['preco']
+            game.quantidade = dados_form['quantidade']
+            #  confirmando as alterações no vanco
+            db.session.commit()
+            return redirect(url_for('estoque'))
+        return render_template('editar-jogos.html', game=game) 
+    
+@app.route('/cadastro', methods=['GET', 'POST'])
+def cadastro():
+    #verificando se o método é POST (tentando cadastrar)
+    if request.method == 'POST':
+        #coletando dados do usuario
+        email = request.form['email']
+        senha = request.form['senha']
+        # enviando dados para o model
+        senha_criptografada = generate_password_hash(senha, method='scrypt')
+        
+        novo_usuario = Usuario(email=email, senha=senha_criptografada)
+        # cadastrando no banco
+        db.session.add(novo_usuario)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('cadastro.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return 'Bem-vindo a pagina de login'

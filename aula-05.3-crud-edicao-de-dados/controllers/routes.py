@@ -92,3 +92,21 @@ def init_app(app):
         games = Game.query.all()
         return render_template('estoque-jogos.html', games=games)
     
+    @app.route('/editar-jogos/<int:id>', methods=['GET'])
+    def editar_jogos(id):
+        # buscando o jogo no banco pelo id
+        game = Game.query.get(id)
+        # verificando se a requisição é post
+        if request.method = 'POST':
+            dados_form = request.form.to_dict()
+            game.titulo = dados_form['titulo']
+            game.ano = dados_form['ano']
+            game.categoria = dados_form['categoria']
+            game.plataforma = dados_form['plataforma']
+            game.preco = dados_form['preco']
+            game.quantidade = dados_form['quantidade']
+            #  confirmando as alterações no vanco
+            db.session.commit()
+            return redirect(url_for('estoque'))
+        return render_template('editar-jogos.html', game=game) 
+    

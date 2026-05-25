@@ -54,7 +54,7 @@ def init_app(app):
                                consoles=consoles)
 
     # ROTA DE CADASTRO DE JOGOS
-    @app.route('/cadgames', methods=['GET', 'POST'])
+    @app.route('/cadgames', methods=['GET', 'POST'])  
     def cadgames():
         # Verificando se o método da requisição é POST
         if request.method == 'POST':
@@ -67,28 +67,28 @@ def init_app(app):
         
         #rota de estoque de jogos
     @app.route("/estoque-jogos", methods=['GET', 'POST'])
-    def estoque_jogos():
-        # verificando se a requisição do tipo post
-        if request.method == 'POST' :
-            # coletando dados preenchidos no formulário
-            dados_form = request.form.to_dict()
-            # enviando os dados para o model
-            newGame = Game(
-                dados_form['titulo'],
-                dados_form['ano'],
-                dados_form['categoria'],
-                dados_form['plataforma'],
-                dados_form['preco'],
-                dados_form['quantidade']
-            )
-            # metodo do SQLAlchemy para gravar os dados no banco
-            db.session.add(newGame)
-            # configurando a operação no banco
+            # criando um parametro na rota (id) para excluir um registro 
+    @app.route("/estoque-jogos/delete/<int:id>")
+    def estoque_jogos(id=None):
+        if id:
+            game = Game.query.get(id)
+            db.session.delete(game)
             db.session.commit()
-            # redirecionando o usurario para a pagina de estoque 
-            return redirect(url_for('estoque-jogos'))
-            
-            # selecionando todos os jogos do banco
-            # select * from games
+            return redirect(url_for('estoque_jogos'))
+        # Cadastrando um jogo
+        if request.method == "POST":
+            dados = request.form.to_dict()
+            newGame = Game(
+                titulo = dados['titulo'],
+                ano = dados['ano'],
+                categoria = dados['categoria'],
+                plataforma = dados['plataforma'],
+                preco = dados['preco'],
+                quantidade = dados['quantidade'],
+            )
+            db.session.add(newGame)
+            db.session.commit()
+            return redirect(url_for('estoque_jogos'))
         games = Game.query.all()
         return render_template('estoque-jogos.html', games=games)
+    
